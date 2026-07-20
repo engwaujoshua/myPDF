@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Merge PDF - myPDF</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tools.css">
+
+</head>
+
+
+<body>
+
+
+    <header class="navbar">
+
+        <a href="../index.html">
+
+            <img
+                src="../assets/logo.svg"
+                alt="myPDF Logo"
+                class="logo"
+            >
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="../index.html">
+                home
+            </a>
+
+            <a href="../all-tools.html">
+                all tools
+            </a>
+
+            <a href="../about.html">
+                about
+            </a>
+
+            <a href="../settings.html">
+                settings
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="tool-container">
+
+
+        <h1>
+            merge PDF files
+        </h1>
+
+
+        <p>
+            Combine multiple PDF files into one PDF.
+        </p>
+
+
+        <input
+        type="file"
+        id="pdf-files"
+        accept="application/pdf"
+        multiple
+        
+    >
+
+
+        <div id="file-list">
+        </div>
+
+
+        <button
+            id="merge-button"
+            disabled
+        >
+            merge PDFs
+        </button>
+
+
+        <a
+            id="download-link"
+            style="display: none;"
+        >
+            download merged PDF
+        </a>
+
+
+    </main>
+
+        <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+        <script src="../js/tools/merge.js"></script>
+
+        <script src="../js/theme.js"></script>
+
+
+
+</body>
+
+</html>

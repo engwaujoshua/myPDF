@@ -1,0 +1,232 @@
+.tool-container {
+
+    min-height: calc(100vh - 90px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding-top: 70px;
+
+}
+
+
+.tool-container h1 {
+
+    font-size: 26px;
+
+    font-weight: 400;
+
+    margin-bottom: 15px;
+
+}
+
+
+.tool-container p {
+
+    margin-bottom: 30px;
+
+    color: #555555;
+
+}
+
+
+#pdf-files {
+
+    margin-bottom: 25px;
+
+}
+
+
+#file-list {
+
+    width: 400px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.file-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 10px 15px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid #cccccc;
+
+}
+
+
+#merge-button {
+
+    padding: 10px 25px;
+
+    border: 1px solid #333333;
+
+    background: #9dcced;
+
+    cursor: pointer;
+
+}
+
+
+#merge-button:disabled {
+
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+}
+
+
+#download-link {
+
+    margin-top: 25px;
+
+    color: #333333;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+}
+
+.file-item > div {
+    display: flex;
+
+    gap: 5px;
+}
+
+.file-item button {
+    padding: 4px 8px;
+
+    border: 1px solid #999999;
+
+    background: #ffffff;
+
+    cursor: pointer;
+}
+
+.file-item button:hover {
+    background: #eeeeee;
+}
+
+.compression-options {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+
+#compression-level {
+    padding: 8px 15px;
+
+    border: 1px solid #999999;
+
+    background: #ffffff;
+
+    cursor: pointer;
+}
+
+
+#compress-button {
+    padding: 10px 25px;
+
+    border: 1px solid #333333;
+
+    background: #9dcced;
+
+    cursor: pointer;
+}
+
+
+#compress-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+#convert-button {
+    padding: 10px 25px;
+
+    margin-top: 20px;
+
+    border: 1px solid #333333;
+
+    background: #9dcced;
+
+    cursor: pointer;
+}
+
+
+#convert-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+#image-results {
+    width: 700px;
+
+    margin-top: 30px;
+}
+
+
+.image-result {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid #cccccc;
+}
+
+
+.image-result img {
+    max-width: 250px;
+
+    max-height: 350px;
+}
+
+
+.image-result a {
+    color: #333333;
+
+    text-decoration: underline;
+}
+
+#download-all-button {
+    padding: 10px 25px;
+
+    margin-top: 20px;
+
+    border: 1px solid #333333;
+
+    background: #9dcced;
+
+    cursor: pointer;
+}

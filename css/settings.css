@@ -1,0 +1,28 @@
+.settings-container {
+    min-height: calc(100vh - 90px);
+
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-top: 80px;
+}
+
+#dark-mode-button {
+    padding: 8px 20px;
+
+    border: 1px solid #333333;
+
+    border-radius: 20px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+#dark-mode-button:hover {
+    background: #eeeeee;
+}

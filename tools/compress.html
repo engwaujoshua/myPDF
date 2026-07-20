@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Compress PDF - myPDF</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tools.css">
+
+</head>
+
+
+<body>
+
+
+    <header class="navbar">
+
+        <a href="../index.html">
+
+            <img
+                src="../assets/logo.svg"
+                alt="myPDF Logo"
+                class="logo"
+            >
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="../index.html">
+                home
+            </a>
+
+            <a href="../all-tools.html">
+                all tools
+            </a>
+
+            <a href="../about.html">
+                about
+            </a>
+
+            <a href="../settings.html">
+                settings
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="tool-container">
+
+
+        <h1>
+            compress PDF
+        </h1>
+
+
+        <p>
+            Reduce the size of a PDF file.
+        </p>
+
+
+        <input
+            type="file"
+            id="pdf-file"
+            accept="application/pdf"
+        >
+
+
+        <div class="compression-options">
+
+            <label for="compression-level">
+                compression level
+            </label>
+
+
+            <select id="compression-level">
+
+                <option value="low">
+                    low compression
+                </option>
+
+                <option value="medium" selected>
+                    medium compression
+                </option>
+
+                <option value="high">
+                    high compression
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            id="compress-button"
+            disabled
+        >
+            compress PDF
+        </button>
+
+
+        <a
+            id="download-link"
+            style="display: none;"
+        >
+            download compressed PDF
+        </a>
+
+
+    </main>
+
+
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+    <script src="../js/tools/compress.js"></script>
+
+    <script src="../js/theme.js"></script>
+
+
+</body>
+
+</html>
