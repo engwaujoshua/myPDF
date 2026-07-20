@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPG to PDF - myPDF</title>
+    <title>Crop PDF - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,60 +57,85 @@
 
 
         <h1>
-            JPG to PDF
+            crop PDF
         </h1>
 
 
         <p>
-            Convert JPG images into a PDF document.
+            Crop the visible area of every page in a PDF.
         </p>
 
 
         <input
             type="file"
-            id="image-files"
-            accept="image/jpeg"
-            multiple
+            id="pdf-file"
+            accept="application/pdf"
         >
 
 
-        <div class="jpg-options">
+        <div class="crop-options">
 
 
-            <label for="page-size">
-                page size
+            <label>
+                top
+
+                <input
+                    type="number"
+                    id="crop-top"
+                    value="0"
+                    min="0"
+                >
+
             </label>
 
 
-            <select id="page-size">
+            <label>
+                right
 
-                <option value="fit">
-                    fit image to page
-                </option>
+                <input
+                    type="number"
+                    id="crop-right"
+                    value="0"
+                    min="0"
+                >
 
-                <option value="a4">
-                    A4
-                </option>
-
-                <option value="letter">
-                    Letter
-                </option>
-
-            </select>
+            </label>
 
 
-        </div>
+            <label>
+                bottom
+
+                <input
+                    type="number"
+                    id="crop-bottom"
+                    value="0"
+                    min="0"
+                >
+
+            </label>
 
 
-        <div id="image-preview">
+            <label>
+                left
+
+                <input
+                    type="number"
+                    id="crop-left"
+                    value="0"
+                    min="0"
+                >
+
+            </label>
+
+
         </div>
 
 
         <button
-            id="convert-button"
+            id="crop-button"
             disabled
         >
-            convert to PDF
+            crop PDF
         </button>
 
 
@@ -118,7 +143,7 @@
             id="download-link"
             style="display: none;"
         >
-            download PDF
+            download cropped PDF
         </a>
 
 
@@ -127,7 +152,7 @@
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-    <script src="../js/tools/jpg-to-pdf.js"></script>
+    <script src="../js/tools/crop.js"></script>
 
     <script src="../js/theme.js"></script>
 

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPG to PDF - myPDF</title>
+    <title>PDF to TXT - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,77 +57,51 @@
 
 
         <h1>
-            JPG to PDF
+            PDF to TXT
         </h1>
 
 
         <p>
-            Convert JPG images into a PDF document.
+            Extract text from a PDF document.
         </p>
 
 
         <input
             type="file"
-            id="image-files"
-            accept="image/jpeg"
-            multiple
+            id="pdf-file"
+            accept="application/pdf"
         >
-
-
-        <div class="jpg-options">
-
-
-            <label for="page-size">
-                page size
-            </label>
-
-
-            <select id="page-size">
-
-                <option value="fit">
-                    fit image to page
-                </option>
-
-                <option value="a4">
-                    A4
-                </option>
-
-                <option value="letter">
-                    Letter
-                </option>
-
-            </select>
-
-
-        </div>
-
-
-        <div id="image-preview">
-        </div>
 
 
         <button
-            id="convert-button"
+            id="extract-button"
             disabled
         >
-            convert to PDF
+            extract text
         </button>
+
+
+        <textarea
+            id="text-output"
+            placeholder="Extracted text will appear here..."
+            readonly
+        ></textarea>
 
 
         <a
             id="download-link"
             style="display: none;"
         >
-            download PDF
+            download TXT file
         </a>
 
 
     </main>
 
 
-    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-    <script src="../js/tools/jpg-to-pdf.js"></script>
+    <script src="../js/tools/pdf-to-txt.js"></script>
 
     <script src="../js/theme.js"></script>
 

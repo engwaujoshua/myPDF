@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPG to PDF - myPDF</title>
+    <title>Watermark PDF - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,60 +57,76 @@
 
 
         <h1>
-            JPG to PDF
+            watermark PDF
         </h1>
 
 
         <p>
-            Convert JPG images into a PDF document.
+            Add text to every page of a PDF.
         </p>
 
 
         <input
             type="file"
-            id="image-files"
-            accept="image/jpeg"
-            multiple
+            id="pdf-file"
+            accept="application/pdf"
         >
 
 
-        <div class="jpg-options">
+        <input
+            type="text"
+            id="watermark-text"
+            placeholder="Enter watermark text"
+        >
 
 
-            <label for="page-size">
-                page size
+        <div class="watermark-options">
+
+
+            <label for="watermark-position">
+                position
             </label>
 
 
-            <select id="page-size">
+            <select id="watermark-position">
 
-                <option value="fit">
-                    fit image to page
+                <option value="center">
+                    center
                 </option>
 
-                <option value="a4">
-                    A4
+                <option value="top">
+                    top
                 </option>
 
-                <option value="letter">
-                    Letter
+                <option value="bottom">
+                    bottom
                 </option>
 
             </select>
 
 
-        </div>
+            <label for="watermark-opacity">
+                opacity
+            </label>
 
 
-        <div id="image-preview">
+            <input
+                type="range"
+                id="watermark-opacity"
+                min="0.1"
+                max="1"
+                step="0.1"
+                value="0.3"
+            >
+
         </div>
 
 
         <button
-            id="convert-button"
+            id="watermark-button"
             disabled
         >
-            convert to PDF
+            add watermark
         </button>
 
 
@@ -118,7 +134,7 @@
             id="download-link"
             style="display: none;"
         >
-            download PDF
+            download watermarked PDF
         </a>
 
 
@@ -127,7 +143,7 @@
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-    <script src="../js/tools/jpg-to-pdf.js"></script>
+    <script src="../js/tools/watermark.js"></script>
 
     <script src="../js/theme.js"></script>
 

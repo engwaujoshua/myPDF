@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPG to PDF - myPDF</title>
+    <title>Page Numbers - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,60 +57,71 @@
 
 
         <h1>
-            JPG to PDF
+            page numbers
         </h1>
 
 
         <p>
-            Convert JPG images into a PDF document.
+            Add page numbers to your PDF document.
         </p>
 
 
         <input
             type="file"
-            id="image-files"
-            accept="image/jpeg"
-            multiple
+            id="pdf-file"
+            accept="application/pdf"
         >
 
 
-        <div class="jpg-options">
+        <div class="page-number-options">
 
 
-            <label for="page-size">
-                page size
+            <label for="page-number-position">
+                position
             </label>
 
 
-            <select id="page-size">
+            <select id="page-number-position">
 
-                <option value="fit">
-                    fit image to page
+                <option value="bottom-center">
+                    bottom center
                 </option>
 
-                <option value="a4">
-                    A4
+                <option value="bottom-left">
+                    bottom left
                 </option>
 
-                <option value="letter">
-                    Letter
+                <option value="bottom-right">
+                    bottom right
+                </option>
+
+                <option value="top-center">
+                    top center
                 </option>
 
             </select>
 
 
-        </div>
+            <label for="starting-number">
+                starting number
+            </label>
 
 
-        <div id="image-preview">
+            <input
+                type="number"
+                id="starting-number"
+                value="1"
+                min="1"
+            >
+
         </div>
 
 
         <button
-            id="convert-button"
+            id="page-number-button"
             disabled
         >
-            convert to PDF
+            add page numbers
         </button>
 
 
@@ -118,7 +129,7 @@
             id="download-link"
             style="display: none;"
         >
-            download PDF
+            download numbered PDF
         </a>
 
 
@@ -127,7 +138,7 @@
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-    <script src="../js/tools/jpg-to-pdf.js"></script>
+    <script src="../js/tools/page-numbers.js"></script>
 
     <script src="../js/theme.js"></script>
 

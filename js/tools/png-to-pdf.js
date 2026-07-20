@@ -54,7 +54,7 @@ imageInput.addEventListener(
 
 
                 preview.classList.add(
-                    "jpg-preview"
+                    "png-preview"
                 );
 
 
@@ -86,7 +86,7 @@ imageInput.addEventListener(
 );
 
 
-// Convert JPG images to PDF
+// Convert images to PDF
 convertButton.addEventListener(
     "click",
     async function () {
@@ -121,22 +121,21 @@ convertButton.addEventListener(
                     await imageFile.arrayBuffer();
 
 
-                const jpgImage =
-                    await pdfDoc.embedJpg(
+                const pngImage =
+                    await pdfDoc.embedPng(
                         imageBytes
                     );
 
 
                 const imageWidth =
-                    jpgImage.width;
+                    pngImage.width;
 
 
                 const imageHeight =
-                    jpgImage.height;
+                    pngImage.height;
 
 
                 let pageWidth;
-
 
                 let pageHeight;
 
@@ -237,7 +236,7 @@ convertButton.addEventListener(
 
                 page.drawImage(
 
-                    jpgImage,
+                    pngImage,
 
                     {
 

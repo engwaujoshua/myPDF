@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPG to PDF - myPDF</title>
+    <title>Edit PDF Metadata - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,60 +57,88 @@
 
 
         <h1>
-            JPG to PDF
+            edit PDF metadata
         </h1>
 
 
         <p>
-            Convert JPG images into a PDF document.
+            Edit information stored inside a PDF document.
         </p>
 
 
         <input
             type="file"
-            id="image-files"
-            accept="image/jpeg"
-            multiple
+            id="pdf-file"
+            accept="application/pdf"
         >
 
 
-        <div class="jpg-options">
+        <div class="metadata-form">
 
 
-            <label for="page-size">
-                page size
+            <label>
+                title
+
+                <input
+                    type="text"
+                    id="pdf-title"
+                >
+
             </label>
 
 
-            <select id="page-size">
+            <label>
+                author
 
-                <option value="fit">
-                    fit image to page
-                </option>
+                <input
+                    type="text"
+                    id="pdf-author"
+                >
 
-                <option value="a4">
-                    A4
-                </option>
-
-                <option value="letter">
-                    Letter
-                </option>
-
-            </select>
+            </label>
 
 
-        </div>
+            <label>
+                subject
+
+                <input
+                    type="text"
+                    id="pdf-subject"
+                >
+
+            </label>
 
 
-        <div id="image-preview">
+            <label>
+                keywords
+
+                <input
+                    type="text"
+                    id="pdf-keywords"
+                >
+
+            </label>
+
+
+            <label>
+                creator
+
+                <input
+                    type="text"
+                    id="pdf-creator"
+                >
+
+            </label>
+
+
         </div>
 
 
         <button
-            id="convert-button"
+            id="save-metadata-button"
             disabled
         >
-            convert to PDF
+            save metadata
         </button>
 
 
@@ -118,7 +146,7 @@
             id="download-link"
             style="display: none;"
         >
-            download PDF
+            download updated PDF
         </a>
 
 
@@ -127,7 +155,7 @@
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-    <script src="../js/tools/jpg-to-pdf.js"></script>
+    <script src="../js/tools/edit-metadata.js"></script>
 
     <script src="../js/theme.js"></script>
 

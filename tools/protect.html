@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JPG to PDF - myPDF</title>
+    <title>Protect PDF - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,60 +57,41 @@
 
 
         <h1>
-            JPG to PDF
+            protect PDF
         </h1>
 
 
         <p>
-            Convert JPG images into a PDF document.
+            Add password protection to a PDF document.
         </p>
 
 
         <input
             type="file"
-            id="image-files"
-            accept="image/jpeg"
-            multiple
+            id="pdf-file"
+            accept="application/pdf"
         >
 
 
-        <div class="jpg-options">
+        <input
+            type="password"
+            id="pdf-password"
+            placeholder="Enter password"
+        >
 
 
-            <label for="page-size">
-                page size
-            </label>
-
-
-            <select id="page-size">
-
-                <option value="fit">
-                    fit image to page
-                </option>
-
-                <option value="a4">
-                    A4
-                </option>
-
-                <option value="letter">
-                    Letter
-                </option>
-
-            </select>
-
-
-        </div>
-
-
-        <div id="image-preview">
-        </div>
+        <input
+            type="password"
+            id="confirm-password"
+            placeholder="Confirm password"
+        >
 
 
         <button
-            id="convert-button"
+            id="protect-button"
             disabled
         >
-            convert to PDF
+            protect PDF
         </button>
 
 
@@ -118,7 +99,7 @@
             id="download-link"
             style="display: none;"
         >
-            download PDF
+            download protected PDF
         </a>
 
 
@@ -127,7 +108,7 @@
 
     <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-    <script src="../js/tools/jpg-to-pdf.js"></script>
+    <script src="../js/tools/protect.js"></script>
 
     <script src="../js/theme.js"></script>
 
