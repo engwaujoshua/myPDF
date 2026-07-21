@@ -290,3 +290,52 @@ body.dark-mode .stats-section {
 body.dark-mode .stat-item p {
     color: #bbbbbb;
 }
+
+
+
+.logo-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    text-decoration: none;
+}
+
+.logo {
+    width: 42px;
+
+    height: 42px;
+
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #222222;
+
+    letter-spacing: -0.5px;
+}
+
+
+body.dark-mode .logo-text {
+    color: #ffffff;
+}
+
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+}

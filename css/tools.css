@@ -57,11 +57,49 @@
 
     align-items: center;
 
-    padding: 10px 15px;
+    padding: 14px 18px;
 
-    margin-bottom: 8px;
+    margin-top: 12px;
 
-    border: 1px solid #cccccc;
+    border: 1px solid #dddddd;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+}
+
+.file-item button {
+
+    margin-left: 8px;
+
+    width: 34px;
+
+    height: 34px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    background: #9dcced;
+
+    transition: .2s;
+
+}
+
+.file-item button:hover {
+
+    background: #78b8e2;
+
+}
+
+body.dark-mode .file-item {
+
+    background: #2a2a2a;
+
+    border-color: #444;
 
 }
 
@@ -894,5 +932,278 @@
             1fr;
 
     }
+
+}
+
+
+
+/* =========================================
+   UNIVERSAL TOOL LAYOUT
+========================================= */
+
+.tool-container {
+    width: 100%;
+    max-width: 850px;
+
+    margin: 50px auto;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+
+    box-sizing: border-box;
+}
+
+.tool-title {
+    font-size: 34px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+.tool-description {
+    text-align: center;
+
+    color: #666;
+
+    margin-bottom: 35px;
+
+    line-height: 1.6;
+}
+
+.upload-area {
+
+    border: 2px dashed #9dcced;
+
+    border-radius: 14px;
+
+    padding: 55px 30px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+    background: #fafcff;
+
+}
+
+.upload-area:hover {
+
+    border-color: #78b8e2;
+
+    background: #f2f9fd;
+
+}
+
+.upload-area.dragover {
+
+    border-color: #3a98d8;
+
+    background: #eaf6fc;
+
+}
+
+.upload-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 15px;
+
+}
+
+.upload-title {
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+}
+
+.upload-subtitle {
+
+    margin-top: 10px;
+
+    color: #777;
+
+}
+
+.file-list {
+
+    margin-top: 25px;
+
+}
+
+.file-item {
+
+    padding: 12px 18px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    margin-bottom: 10px;
+
+    background: white;
+
+}
+
+.primary-action {
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #9dcced;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.primary-action:hover {
+
+    background: #78b8e2;
+
+}
+
+
+
+body.dark-mode .tool-container {
+
+    background: #1b1b1b;
+
+}
+
+body.dark-mode .tool-description {
+
+    color: #bdbdbd;
+
+}
+
+body.dark-mode .upload-area {
+
+    background: #222;
+
+    border-color: #555;
+
+}
+
+body.dark-mode .upload-area:hover {
+
+    background: #2b2b2b;
+
+}
+
+body.dark-mode .file-item {
+
+    background: #2c2c2c;
+
+    border-color: #444;
+
+}
+
+body.dark-mode .primary-action {
+
+    color: white;
+
+}
+
+
+.input-label {
+
+    display: block;
+
+    margin-top: 30px;
+
+    margin-bottom: 10px;
+
+    font-weight: 600;
+
+}
+
+.text-input {
+
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    font-size: 16px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 8px;
+
+    box-sizing: border-box;
+
+    outline: none;
+
+}
+
+.text-input:focus {
+
+    border-color: #78b8e2;
+
+}
+
+body.dark-mode .text-input {
+
+    background: #2b2b2b;
+
+    color: white;
+
+    border-color: #555;
+
+}
+
+
+.split-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+
+}
+
+.split-options label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+}
+
+body.dark-mode .split-options label {
+
+    color: white;
 
 }

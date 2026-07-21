@@ -1,0 +1,125 @@
+.all-tools-container {
+
+    min-height:
+        calc(100vh - 90px);
+
+    padding:
+        60px 30px;
+
+    box-sizing:
+        border-box;
+
+}
+
+
+.tools-library {
+
+    width:
+        100%;
+
+    max-width:
+        1000px;
+
+    margin:
+        0 auto;
+
+}
+
+
+.tool-category {
+
+    margin-bottom:
+        60px;
+
+}
+
+
+.tool-category h2 {
+
+    margin-bottom:
+        20px;
+
+    font-size:
+        18px;
+
+    font-weight:
+        600;
+
+}
+
+
+.tool-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap:
+        18px;
+
+}
+
+
+.tool-grid .tool-button {
+
+    width:
+        100%;
+
+    min-height:
+        55px;
+
+    box-sizing:
+        border-box;
+
+}
+
+
+
+.tools-header {
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+
+.tools-header h1 {
+    margin-bottom: 25px;
+
+    font-size: 32px;
+}
+
+
+#tool-search {
+    width: 100%;
+
+    max-width: 500px;
+
+    height: 48px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #aaaaaa;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+#tool-search:focus {
+    border-color: #78b8e2;
+
+    box-shadow:
+        0 0 0 3px rgba(
+            120,
+            184,
+            226,
+            0.2
+        );
+}

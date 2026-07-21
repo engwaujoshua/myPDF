@@ -4,7 +4,9 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Merge PDF - myPDF</title>
 
@@ -13,97 +15,109 @@
 
 </head>
 
-
 <body>
 
+<header class="navbar">
 
-    <header class="navbar">
+    <a href="../index.html">
 
-        <a href="../index.html">
+        <img src="../assets/logo.jpg"
+             alt="myPDF"
+             class="logo">
 
-            <img
-                src="../assets/logo.svg"
-                alt="myPDF Logo"
-                class="logo"
-            >
+    </a>
 
-        </a>
+    <nav class="nav-links">
 
+        <a href="../index.html">Home</a>
 
-        <nav class="nav-links">
+        <a href="../all-tools.html">All Tools</a>
 
-            <a href="../index.html">
-                home
-            </a>
+        <a href="../about.html">About</a>
 
-            <a href="../all-tools.html">
-                all tools
-            </a>
+        <a href="../settings.html">Settings</a>
 
-            <a href="../about.html">
-                about
-            </a>
+    </nav>
 
-            <a href="../settings.html">
-                settings
-            </a>
-
-        </nav>
-
-    </header>
+</header>
 
 
-    <main class="tool-container">
+<main class="tool-container">
+
+    <h1 class="tool-title">
+        Merge PDF
+    </h1>
+
+    <p class="tool-description">
+
+        Combine multiple PDF files into one document while keeping the order you choose.
+
+    </p>
 
 
-        <h1>
-            merge PDF files
-        </h1>
+    <div
+        id="upload-area"
+        class="upload-area">
 
-
-        <p>
-            Combine multiple PDF files into one PDF.
-        </p>
-
-
-        <input
-        type="file"
-        id="pdf-files"
-        accept="application/pdf"
-        multiple
-        
-    >
-
-
-        <div id="file-list">
+        <div class="upload-icon">
+            📄
         </div>
 
+        <div class="upload-title">
 
-        <button
-            id="merge-button"
-            disabled
-        >
-            merge PDFs
-        </button>
+            Drag & Drop PDF files here
 
+        </div>
 
-        <a
-            id="download-link"
-            style="display: none;"
-        >
-            download merged PDF
-        </a>
+        <div class="upload-subtitle">
+
+            or click to browse
+
+        </div>
+
+    </div>
 
 
-    </main>
+    <input
+        type="file"
+        id="pdf-input"
+        accept=".pdf"
+        multiple
+        hidden>
 
-        <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 
-        <script src="../js/tools/merge.js"></script>
+    <div
+        id="file-list"
+        class="file-list">
 
-        <script src="../js/theme.js"></script>
+    </div>
 
 
+    <button
+        id="merge-button"
+        class="primary-action"
+        disabled>
+
+        Merge PDFs
+
+    </button>
+
+
+    <a
+        id="download-link"
+        style="display:none">
+
+    </a>
+
+
+</main>
+
+
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+<script src="../js/tools/merge.js"></script>
+
+<script src="../js/theme.js"></script>
 
 </body>
 

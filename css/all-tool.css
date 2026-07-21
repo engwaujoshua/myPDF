@@ -1,9 +1,0 @@
-.all-tools-container {
-    min-height: calc(100vh - 90px);
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-
-    padding-top: 80px;
-}
