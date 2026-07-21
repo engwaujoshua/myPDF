@@ -1,4 +1,14 @@
-const pdfInput = document.getElementById("pdf-file");
+const pdfInput =
+    document.getElementById("pdf-file");
+
+const pageSelection =
+    document.getElementById("page-selection");
+
+const customPages =
+    document.getElementById("custom-pages");
+
+const imageQuality =
+    document.getElementById("image-quality");
 
 const convertButton =
     document.getElementById("convert-button");
@@ -15,204 +25,415 @@ let selectedFile = null;
 let convertedImages = [];
 
 
-// Select PDF
-pdfInput.addEventListener("change", function () {
-
-    selectedFile = pdfInput.files[0];
-
-    imageResults.innerHTML = "";
-
-    convertedImages = [];
-
-    downloadAllButton.style.display = "none";
+// Show/hide custom page input
+pageSelection.addEventListener(
+    "change",
+    function () {
 
 
-    if (selectedFile) {
+        if (
+            pageSelection.value === "custom"
+        ) {
 
-        convertButton.disabled = false;
+            customPages.style.display =
+                "block";
 
-    } else {
+        } else {
 
-        convertButton.disabled = true;
+            customPages.style.display =
+                "none";
+
+        }
 
     }
+);
 
-});
+
+// Select PDF
+pdfInput.addEventListener(
+    "change",
+    function () {
+
+
+        selectedFile =
+            pdfInput.files[0];
+
+
+        imageResults.innerHTML =
+            "";
+
+
+        convertedImages =
+            [];
+
+
+        downloadAllButton.style.display =
+            "none";
+
+
+        convertButton.disabled =
+            !selectedFile;
+
+    }
+);
 
 
 // Convert PDF to JPG
-convertButton.addEventListener("click", async function () {
-
-    try {
-
-        convertButton.disabled = true;
-
-        convertButton.textContent = "converting...";
+convertButton.addEventListener(
+    "click",
+    async function () {
 
 
-        imageResults.innerHTML = "";
-
-        convertedImages = [];
+        try {
 
 
-        const fileBytes =
-            await selectedFile.arrayBuffer();
+            convertButton.disabled =
+                true;
 
 
-        const pdf =
-            await pdfjsLib.getDocument({
-
-                data: fileBytes
-
-            }).promise;
+            convertButton.textContent =
+                "converting...";
 
 
-        for (
-
-            let pageNumber = 1;
-
-            pageNumber <= pdf.numPages;
-
-            pageNumber++
-
-        ) {
+            imageResults.innerHTML =
+                "";
 
 
-            const page =
-                await pdf.getPage(pageNumber);
+            convertedImages =
+                [];
 
 
-            const scale = 2;
+            const fileBytes =
+                await selectedFile.arrayBuffer();
 
 
-            const viewport =
-                page.getViewport({
+            const pdf =
+                await pdfjsLib.getDocument({
 
-                    scale: scale
+                    data: fileBytes
+
+                }).promise;
+
+
+            let pagesToConvert = [];
+
+
+            if (
+                pageSelection.value === "all"
+            ) {
+
+
+                for (
+
+                    let i = 1;
+
+                    i <= pdf.numPages;
+
+                    i++
+
+                ) {
+
+                    pagesToConvert.push(i);
+
+                }
+
+            } else {
+
+
+                pagesToConvert =
+                    parsePageSelection(
+
+                        customPages.value,
+
+                        pdf.numPages
+
+                    );
+
+            }
+
+
+            if (
+                pagesToConvert.length === 0
+            ) {
+
+                throw new Error(
+                    "No valid pages selected."
+                );
+
+            }
+
+
+            for (
+                const pageNumber
+                of pagesToConvert
+            ) {
+
+
+                const page =
+                    await pdf.getPage(
+                        pageNumber
+                    );
+
+
+                const scale =
+                    2;
+
+
+                const viewport =
+                    page.getViewport({
+
+                        scale: scale
+
+                    });
+
+
+                const canvas =
+                    document.createElement(
+                        "canvas"
+                    );
+
+
+                const context =
+                    canvas.getContext(
+                        "2d"
+                    );
+
+
+                canvas.width =
+                    viewport.width;
+
+
+                canvas.height =
+                    viewport.height;
+
+
+                await page.render({
+
+                    canvasContext:
+                        context,
+
+                    viewport:
+                        viewport
+
+                }).promise;
+
+
+                const quality =
+                    Number(
+                        imageQuality.value
+                    );
+
+
+                const imageData =
+                    canvas.toDataURL(
+
+                        "image/jpeg",
+
+                        quality
+
+                    );
+
+
+                const imageName =
+                    `page-${pageNumber}.jpg`;
+
+
+                convertedImages.push({
+
+                    name:
+                        imageName,
+
+                    data:
+                        imageData
 
                 });
 
 
-            const canvas =
-                document.createElement("canvas");
+                const result =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            const context =
-                canvas.getContext("2d");
-
-
-            canvas.width =
-                viewport.width;
-
-
-            canvas.height =
-                viewport.height;
-
-
-            await page.render({
-
-                canvasContext: context,
-
-                viewport: viewport
-
-            }).promise;
-
-
-            const imageData =
-                canvas.toDataURL(
-
-                    "image/jpeg",
-
-                    0.9
-
+                result.classList.add(
+                    "image-result"
                 );
 
 
-            convertedImages.push({
+                result.innerHTML = `
 
-                name: `page-${pageNumber}.jpg`,
+                    <img
 
-                data: imageData
+                        src="${imageData}"
 
-            });
+                        alt="Page ${pageNumber}"
 
+                    >
 
-            const result =
-                document.createElement("div");
+                    <a
 
+                        href="${imageData}"
 
-            result.classList.add("image-result");
+                        download="${imageName}"
 
+                    >
 
-            result.innerHTML = `
+                        download page ${pageNumber}
 
-                <img
+                    </a>
 
-                    src="${imageData}"
-
-                    alt="Page ${pageNumber}"
-
-                >
-
-                <a
-
-                    href="${imageData}"
-
-                    download="page-${pageNumber}.jpg"
-
-                >
-
-                    download page ${pageNumber}
-
-                </a>
-
-            `;
+                `;
 
 
-            imageResults.appendChild(result);
+                imageResults.appendChild(
+                    result
+                );
+
+            }
+
+
+            downloadAllButton.style.display =
+                "block";
+
+
+            convertButton.textContent =
+                "convert to JPG";
+
+
+            convertButton.disabled =
+                false;
+
+
+        } catch (error) {
+
+
+            console.error(error);
+
+
+            alert(
+
+                "Something went wrong while converting the PDF."
+
+            );
+
+
+            convertButton.textContent =
+                "convert to JPG";
+
+
+            convertButton.disabled =
+                false;
 
         }
 
-
-        downloadAllButton.style.display =
-            "block";
-
-
-        convertButton.textContent =
-            "convert to JPG";
-
-        convertButton.disabled =
-            false;
-
-
-    } catch (error) {
-
-        console.error(error);
-
-
-        alert(
-
-            "Something went wrong while converting the PDF."
-
-        );
-
-
-        convertButton.textContent =
-            "convert to JPG";
-
-        convertButton.disabled =
-            false;
-
     }
+);
 
-});
+
+// Parse page ranges
+function parsePageSelection(
+    input,
+    maxPage
+) {
 
 
-// Download all images
+    const pages =
+        new Set();
+
+
+    const parts =
+        input.split(",");
+
+
+    parts.forEach(
+        function (part) {
+
+
+            part =
+                part.trim();
+
+
+            if (
+                part.includes("-")
+            ) {
+
+
+                const range =
+                    part.split("-");
+
+
+                const start =
+                    Number(
+                        range[0]
+                    );
+
+
+                const end =
+                    Number(
+                        range[1]
+                    );
+
+
+                for (
+
+                    let i = start;
+
+                    i <= end;
+
+                    i++
+
+                ) {
+
+
+                    if (
+                        i >= 1 &&
+                        i <= maxPage
+                    ) {
+
+                        pages.add(i);
+
+                    }
+
+                }
+
+            } else {
+
+
+                const page =
+                    Number(part);
+
+
+                if (
+                    page >= 1 &&
+                    page <= maxPage
+                ) {
+
+                    pages.add(page);
+
+                }
+
+            }
+
+        }
+    );
+
+
+    return Array.from(pages).sort(
+
+        function (a, b) {
+
+            return a - b;
+
+        }
+
+    );
+
+}
+
+
+// Download all JPGs
 downloadAllButton.addEventListener(
-
     "click",
-
     async function () {
 
 
@@ -227,28 +448,30 @@ downloadAllButton.addEventListener(
                 new JSZip();
 
 
-            convertedImages.forEach(function (image) {
+            convertedImages.forEach(
+                function (image) {
 
 
-                const base64Data =
-                    image.data.split(",")[1];
+                    const base64Data =
+                        image.data.split(",")[1];
 
 
-                zip.file(
+                    zip.file(
 
-                    image.name,
+                        image.name,
 
-                    base64Data,
+                        base64Data,
 
-                    {
+                        {
 
-                        base64: true
+                            base64: true
 
-                    }
+                        }
 
-                );
+                    );
 
-            });
+                }
+            );
 
 
             const zipBlob =
@@ -260,23 +483,31 @@ downloadAllButton.addEventListener(
 
 
             const url =
-                URL.createObjectURL(zipBlob);
+                URL.createObjectURL(
+                    zipBlob
+                );
 
 
             const link =
-                document.createElement("a");
+                document.createElement(
+                    "a"
+                );
 
 
-            link.href = url;
+            link.href =
+                url;
+
 
             link.download =
-                "pdf-images.zip";
+                "pdf-pages.zip";
 
 
             link.click();
 
 
-            URL.revokeObjectURL(url);
+            URL.revokeObjectURL(
+                url
+            );
 
 
             downloadAllButton.textContent =
@@ -302,5 +533,4 @@ downloadAllButton.addEventListener(
         }
 
     }
-
 );

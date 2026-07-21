@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OCR PDF - myPDF</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tools.css">
+
+</head>
+
+
+<body>
+
+
+    <header class="navbar">
+
+        <a href="../index.html">
+
+            <img
+                src="../assets/logo.svg"
+                alt="myPDF Logo"
+                class="logo"
+
+            >
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="../index.html">
+                home
+            </a>
+
+            <a href="../all-tools.html">
+                all tools
+            </a>
+
+            <a href="../about.html">
+                about
+            </a>
+
+            <a href="../settings.html">
+                settings
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="tool-container">
+
+
+        <h1>
+            OCR PDF
+        </h1>
+
+
+        <p>
+            Extract text from scanned PDF documents.
+        </p>
+
+
+        <input
+            type="file"
+            id="pdf-file"
+            accept="application/pdf"
+        >
+
+
+        <button
+            id="ocr-button"
+            disabled
+        >
+            extract text with OCR
+        </button>
+
+
+        <div
+            id="ocr-status"
+        >
+        </div>
+
+
+        <textarea
+            id="ocr-output"
+            placeholder="OCR text will appear here..."
+            readonly
+        ></textarea>
+
+
+        <button
+            id="download-button"
+            style="display: none;"
+        >
+            download TXT
+        </button>
+
+
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+    <script src="../js/tools/ocr.js"></script>
+
+    <script src="../js/theme.js"></script>
+
+
+</body>
+
+</html>

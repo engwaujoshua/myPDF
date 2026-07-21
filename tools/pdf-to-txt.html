@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PDF to TXT - myPDF</title>
+    <title>PDF to Text - myPDF</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tools.css">
@@ -57,12 +57,12 @@
 
 
         <h1>
-            PDF to TXT
+            PDF to Text
         </h1>
 
 
         <p>
-            Extract text from a PDF document.
+            Extract selectable text from a PDF document.
         </p>
 
 
@@ -88,12 +88,26 @@
         ></textarea>
 
 
-        <a
-            id="download-link"
-            style="display: none;"
-        >
-            download TXT file
-        </a>
+        <div class="text-actions">
+
+
+            <button
+                id="copy-button"
+                style="display: none;"
+            >
+                copy text
+            </button>
+
+
+            <button
+                id="download-button"
+                style="display: none;"
+            >
+                download TXT
+            </button>
+
+
+        </div>
 
 
     </main>
@@ -101,7 +115,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-    <script src="../js/tools/pdf-to-txt.js"></script>
+    <script src="../js/tools/pdf-to-text.js"></script>
 
     <script src="../js/theme.js"></script>
 

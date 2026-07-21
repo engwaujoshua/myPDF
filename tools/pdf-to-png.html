@@ -73,6 +73,60 @@
         >
 
 
+        <div class="pdf-to-png-options">
+
+
+            <label for="page-selection">
+                pages
+            </label>
+
+
+            <select id="page-selection">
+
+                <option value="all">
+                    all pages
+                </option>
+
+                <option value="custom">
+                    custom pages
+                </option>
+
+            </select>
+
+
+            <input
+                type="text"
+                id="custom-pages"
+                placeholder="Example: 1,3,5-7"
+                style="display: none;"
+            >
+
+
+            <label for="image-scale">
+                image quality
+            </label>
+
+
+            <select id="image-scale">
+
+                <option value="2">
+                    high
+                </option>
+
+                <option value="1.5">
+                    medium
+                </option>
+
+                <option value="1">
+                    low
+                </option>
+
+            </select>
+
+
+        </div>
+
+
         <button
             id="convert-button"
             disabled

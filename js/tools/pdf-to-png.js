@@ -1,6 +1,15 @@
 const pdfInput =
     document.getElementById("pdf-file");
 
+const pageSelection =
+    document.getElementById("page-selection");
+
+const customPages =
+    document.getElementById("custom-pages");
+
+const imageScale =
+    document.getElementById("image-scale");
+
 const convertButton =
     document.getElementById("convert-button");
 
@@ -16,29 +25,57 @@ let selectedFile = null;
 let convertedImages = [];
 
 
-// Select PDF
-pdfInput.addEventListener("change", function () {
-
-    selectedFile = pdfInput.files[0];
-
-    imageResults.innerHTML = "";
-
-    convertedImages = [];
-
-    downloadAllButton.style.display = "none";
+// Show/hide custom pages
+pageSelection.addEventListener(
+    "change",
+    function () {
 
 
-    if (selectedFile) {
+        if (
+            pageSelection.value === "custom"
+        ) {
 
-        convertButton.disabled = false;
+            customPages.style.display =
+                "block";
 
-    } else {
+        } else {
 
-        convertButton.disabled = true;
+            customPages.style.display =
+                "none";
+
+        }
 
     }
+);
 
-});
+
+// Select PDF
+pdfInput.addEventListener(
+    "change",
+    function () {
+
+
+        selectedFile =
+            pdfInput.files[0];
+
+
+        imageResults.innerHTML =
+            "";
+
+
+        convertedImages =
+            [];
+
+
+        downloadAllButton.style.display =
+            "none";
+
+
+        convertButton.disabled =
+            !selectedFile;
+
+    }
+);
 
 
 // Convert PDF to PNG
@@ -46,18 +83,24 @@ convertButton.addEventListener(
     "click",
     async function () {
 
+
         try {
 
 
-            convertButton.disabled = true;
+            convertButton.disabled =
+                true;
+
 
             convertButton.textContent =
                 "converting...";
 
 
-            imageResults.innerHTML = "";
+            imageResults.innerHTML =
+                "";
 
-            convertedImages = [];
+
+            convertedImages =
+                [];
 
 
             const fileBytes =
@@ -72,14 +115,57 @@ convertButton.addEventListener(
                 }).promise;
 
 
+            let pagesToConvert = [];
+
+
+            if (
+                pageSelection.value === "all"
+            ) {
+
+
+                for (
+
+                    let i = 1;
+
+                    i <= pdf.numPages;
+
+                    i++
+
+                ) {
+
+                    pagesToConvert.push(i);
+
+                }
+
+            } else {
+
+
+                pagesToConvert =
+                    parsePageSelection(
+
+                        customPages.value,
+
+                        pdf.numPages
+
+                    );
+
+            }
+
+
+            if (
+                pagesToConvert.length === 0
+            ) {
+
+                throw new Error(
+                    "No valid pages selected."
+                );
+
+            }
+
+
             for (
-
-                let pageNumber = 1;
-
-                pageNumber <= pdf.numPages;
-
-                pageNumber++
-
+                const pageNumber
+                of pagesToConvert
             ) {
 
 
@@ -89,7 +175,10 @@ convertButton.addEventListener(
                     );
 
 
-                const scale = 2;
+                const scale =
+                    Number(
+                        imageScale.value
+                    );
 
 
                 const viewport =
@@ -107,7 +196,9 @@ convertButton.addEventListener(
 
 
                 const context =
-                    canvas.getContext("2d");
+                    canvas.getContext(
+                        "2d"
+                    );
 
 
                 canvas.width =
@@ -120,9 +211,11 @@ convertButton.addEventListener(
 
                 await page.render({
 
-                    canvasContext: context,
+                    canvasContext:
+                        context,
 
-                    viewport: viewport
+                    viewport:
+                        viewport
 
                 }).promise;
 
@@ -133,12 +226,17 @@ convertButton.addEventListener(
                     );
 
 
+                const imageName =
+                    `page-${pageNumber}.png`;
+
+
                 convertedImages.push({
 
                     name:
-                        `page-${pageNumber}.png`,
+                        imageName,
 
-                    data: imageData
+                    data:
+                        imageData
 
                 });
 
@@ -168,7 +266,7 @@ convertButton.addEventListener(
 
                         href="${imageData}"
 
-                        download="page-${pageNumber}.png"
+                        download="${imageName}"
 
                     >
 
@@ -221,15 +319,113 @@ convertButton.addEventListener(
         }
 
     }
-
 );
+
+
+// Parse page selection
+function parsePageSelection(
+    input,
+    maxPage
+) {
+
+
+    const pages =
+        new Set();
+
+
+    const parts =
+        input.split(",");
+
+
+    parts.forEach(
+        function (part) {
+
+
+            part =
+                part.trim();
+
+
+            if (
+                part.includes("-")
+            ) {
+
+
+                const range =
+                    part.split("-");
+
+
+                const start =
+                    Number(
+                        range[0]
+                    );
+
+
+                const end =
+                    Number(
+                        range[1]
+                    );
+
+
+                for (
+
+                    let i = start;
+
+                    i <= end;
+
+                    i++
+
+                ) {
+
+
+                    if (
+                        i >= 1 &&
+                        i <= maxPage
+                    ) {
+
+                        pages.add(i);
+
+                    }
+
+                }
+
+            } else {
+
+
+                const page =
+                    Number(part);
+
+
+                if (
+                    page >= 1 &&
+                    page <= maxPage
+                ) {
+
+                    pages.add(page);
+
+                }
+
+            }
+
+        }
+    );
+
+
+    return Array.from(pages).sort(
+
+        function (a, b) {
+
+            return a - b;
+
+        }
+
+    );
+
+}
 
 
 // Download all PNGs
 downloadAllButton.addEventListener(
-
     "click",
-
     async function () {
 
 
@@ -279,7 +475,9 @@ downloadAllButton.addEventListener(
 
 
             const url =
-                URL.createObjectURL(zipBlob);
+                URL.createObjectURL(
+                    zipBlob
+                );
 
 
             const link =
@@ -288,17 +486,20 @@ downloadAllButton.addEventListener(
                 );
 
 
-            link.href = url;
+            link.href =
+                url;
 
 
             link.download =
-                "pdf-images.zip";
+                "pdf-pages.zip";
 
 
             link.click();
 
 
-            URL.revokeObjectURL(url);
+            URL.revokeObjectURL(
+                url
+            );
 
 
             downloadAllButton.textContent =
@@ -324,5 +525,4 @@ downloadAllButton.addEventListener(
         }
 
     }
-
 );

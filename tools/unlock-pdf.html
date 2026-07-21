@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Unlock PDF - myPDF</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tools.css">
+
+</head>
+
+
+<body>
+
+
+    <header class="navbar">
+
+        <a href="../index.html">
+
+            <img
+                src="../assets/logo.svg"
+                alt="myPDF Logo"
+                class="logo"
+            >
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="../index.html">
+                home
+            </a>
+
+            <a href="../all-tools.html">
+                all tools
+            </a>
+
+            <a href="../about.html">
+                about
+            </a>
+
+            <a href="../settings.html">
+                settings
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="tool-container">
+
+
+        <h1>
+            Unlock PDF
+        </h1>
+
+
+        <p>
+            Remove password protection from a PDF.
+        </p>
+
+
+        <input
+            type="file"
+            id="pdf-file"
+            accept="application/pdf"
+        >
+
+
+        <div class="password-container">
+
+
+            <label for="pdf-password">
+                existing PDF password
+            </label>
+
+
+            <input
+                type="password"
+                id="pdf-password"
+                placeholder="Enter PDF password"
+            >
+
+
+        </div>
+
+
+        <button
+            id="unlock-button"
+            disabled
+        >
+            unlock PDF
+        </button>
+
+
+        <div id="unlock-status">
+        </div>
+
+
+    </main>
+
+
+    <script src="../js/tools/unlock-pdf.js"></script>
+
+    <script src="../js/theme.js"></script>
+
+
+</body>
+
+</html>

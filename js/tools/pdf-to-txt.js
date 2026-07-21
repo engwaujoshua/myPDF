@@ -7,37 +7,50 @@ const extractButton =
 const textOutput =
     document.getElementById("text-output");
 
-const downloadLink =
-    document.getElementById("download-link");
+const copyButton =
+    document.getElementById("copy-button");
+
+const downloadButton =
+    document.getElementById("download-button");
 
 
 let selectedFile = null;
 
-let extractedText = "";
-
 
 // Select PDF
-pdfInput.addEventListener("change", function () {
-
-    selectedFile = pdfInput.files[0];
-
-    textOutput.value = "";
-
-    extractedText = "";
-
-    downloadLink.style.display = "none";
+pdfInput.addEventListener(
+    "change",
+    function () {
 
 
-    extractButton.disabled =
-        !selectedFile;
+        selectedFile =
+            pdfInput.files[0];
 
-});
+
+        extractButton.disabled =
+            !selectedFile;
+
+
+        textOutput.value =
+            "";
+
+
+        copyButton.style.display =
+            "none";
+
+
+        downloadButton.style.display =
+            "none";
+
+    }
+);
 
 
 // Extract text
 extractButton.addEventListener(
     "click",
     async function () {
+
 
         try {
 
@@ -50,7 +63,8 @@ extractButton.addEventListener(
                 "extracting...";
 
 
-            textOutput.value = "";
+            textOutput.value =
+                "";
 
 
             const fileBytes =
@@ -65,7 +79,8 @@ extractButton.addEventListener(
                 }).promise;
 
 
-            let allText = "";
+            let fullText =
+                "";
 
 
             for (
@@ -92,65 +107,38 @@ extractButton.addEventListener(
                 const pageText =
                     textContent.items
 
-                        .map(function (item) {
+                        .map(
+                            function (item) {
 
-                            return item.str;
+                                return item.str;
 
-                        })
+                            }
+                        )
 
                         .join(" ");
 
 
-                allText +=
+                fullText +=
 
-                    `\n\n--- Page ${pageNumber} ---\n\n`;
+                    `\n\n--- Page ${pageNumber} ---\n\n`
 
+                    +
 
-                allText += pageText;
+                    pageText;
 
             }
 
 
-            extractedText =
-                allText.trim();
-
-
             textOutput.value =
-                extractedText;
+                fullText.trim();
 
 
-            const textBlob =
-                new Blob(
-
-                    [extractedText],
-
-                    {
-
-                        type: "text/plain"
-
-                    }
-
-                );
+            copyButton.style.display =
+                "inline-block";
 
 
-            const url =
-                URL.createObjectURL(textBlob);
-
-
-            downloadLink.href =
-                url;
-
-
-            downloadLink.download =
-                "extracted-text.txt";
-
-
-            downloadLink.textContent =
-                "download TXT file";
-
-
-            downloadLink.style.display =
-                "block";
+            downloadButton.style.display =
+                "inline-block";
 
 
             extractButton.textContent =
@@ -184,5 +172,102 @@ extractButton.addEventListener(
         }
 
     }
+);
 
+
+// Copy text
+copyButton.addEventListener(
+    "click",
+    async function () {
+
+
+        try {
+
+
+            await navigator.clipboard.writeText(
+
+                textOutput.value
+
+            );
+
+
+            copyButton.textContent =
+                "copied";
+
+
+            setTimeout(
+                function () {
+
+                    copyButton.textContent =
+                        "copy text";
+
+                },
+
+                1500
+
+            );
+
+
+        } catch (error) {
+
+
+            console.error(error);
+
+
+            alert(
+                "Could not copy the text."
+            );
+
+        }
+
+    }
+);
+
+
+// Download text
+downloadButton.addEventListener(
+    "click",
+    function () {
+
+
+        const blob =
+            new Blob(
+
+                [textOutput.value],
+
+                {
+
+                    type: "text/plain"
+
+                }
+
+            );
+
+
+        const url =
+            URL.createObjectURL(blob);
+
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+
+        link.href =
+            url;
+
+
+        link.download =
+            "extracted-text.txt";
+
+
+        link.click();
+
+
+        URL.revokeObjectURL(
+            url
+        );
+
+    }
 );
