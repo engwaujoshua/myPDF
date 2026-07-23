@@ -1,0 +1,35 @@
+:root {
+    /* Light Mode */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7f8fa;
+    --bg-card: #ffffff;
+
+    --text-primary: #111111;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+
+    --border-color: #e5e5e5;
+
+    --accent-color: #111111;
+    --accent-hover: #333333;
+
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode {
+    /* Dark Mode */
+    --bg-primary: #111111;
+    --bg-secondary: #1a1a1a;
+    --bg-card: #222222;
+
+    --text-primary: #ffffff;
+    --text-secondary: #b5b5b5;
+    --text-muted: #777777;
+
+    --border-color: #333333;
+
+    --accent-color: #ffffff;
+    --accent-hover: #dddddd;
+
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}

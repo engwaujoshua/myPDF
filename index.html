@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Tools</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="/index.html" class="logo">PDF Tools</a>
+
+        <nav class="nav-links">
+            <a href="/index.html">Home</a>
+
+            <div class="all-tools-wrapper">
+                <a href="/all-tools.html">All Tools</a>
+                <div class="tools-dropdown"></div>
+            </div>
+
+            <button class="send-button" aria-label="Send">
+                <img src="/assets/icons/send.svg" alt="Send">
+            </button>
+
+            <a href="/about.html">About</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <img id="dark-mode-icon" src="/assets/icons/moon.svg" alt="Dark mode">
+            </button>
+
+            <a href="/login.html">Login</a>
+            <a href="/signup.html" class="signup-button">Signup</a>
+        </div>
+    </header>
+    
+    <main class="home-main">
+    <section class="hero">
+        <h1>All the PDF tools you need.</h1>
+        <p>Simple, fast, and free PDF tools.</p>
+
+        <div class="search-container">
+            <input
+                type="search"
+                id="tool-search"
+                placeholder="Search PDF tools..."
+                aria-label="Search PDF tools"
+            >
+        </div>
+    </section>
+
+    <section class="tool-cards">
+    <a href="/tools/compress.html" class="tool-card">
+        <h2>Compress PDF</h2>
+        <p>Reduce PDF file size.</p>
+    </a>
+
+    <a href="/tools/merge.html" class="tool-card">
+        <h2>Merge PDF</h2>
+        <p>Combine multiple PDFs into one.</p>
+    </a>
+
+    <a href="/tools/split.html" class="tool-card">
+        <h2>Split PDF</h2>
+        <p>Separate pages from a PDF.</p>
+    </a>
+</section>
+
+</main>
+
+    <footer class="footer">
+        <p>&copy; 2026 PDF Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/darkmode.js"></script>
+
+    <script src="/js/navbar.js"></script>
+
+    <script src="/js/search.js"></script>
+
+</body>
+</html>

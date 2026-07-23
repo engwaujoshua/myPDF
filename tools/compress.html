@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compress PDF - PDF Tools</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/components.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/index.html" class="logo">PDF Tools</a>
+
+    <nav class="nav-links">
+        <a href="/index.html">Home</a>
+
+        <div class="all-tools-wrapper">
+            <a href="/all-tools.html">All Tools</a>
+            <div class="tools-dropdown"></div>
+        </div>
+
+        <button class="send-button" aria-label="Send">
+            <img src="/assets/icons/send.svg" alt="Send">
+        </button>
+
+        <a href="/about.html">About</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+            <img id="dark-mode-icon" src="/assets/icons/moon.svg" alt="Dark Mode">
+        </button>
+
+        <a href="/login.html">Login</a>
+        <a href="/signup.html" class="signup-button">Signup</a>
+    </div>
+</header>
+
+<main class="page-content">
+    <h1>Compress PDF</h1>
+
+    <input type="file" id="pdf-file" accept="application/pdf">
+
+    <button id="compress-button" type="button">
+        Compress PDF
+    </button>
+
+    <p id="compress-status"></p>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2026 PDF Tools. All rights reserved.</p>
+</footer>
+
+<script src="/js/darkmode.js"></script>
+<script src="/js/navbar.js"></script>
+<script src="/js/tools-logic/compress.js"></script>
+
+</body>
+</html>
